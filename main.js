@@ -16,9 +16,9 @@ function cellclicked(){
     const cindex=this.getAttribute("cindex");
         if(options[cindex]!=""||!running){
             return;
-}
+        }
     updatecell(this,cindex);
-checkwinner();
+    checkwinner();
 }
 function updatecell(cell,index){
     options[index]=currentPlayer;
@@ -46,6 +46,10 @@ function checkwinner(){
     }
     if(roundWon){
         txt.textContent=`${currentPlayer} wins!`;
+        running=false;
+    }
+    else if(options.every((cell)=>cell!="")){
+        txt.textContent="Draw!";
         running=false;
     }
     else{
